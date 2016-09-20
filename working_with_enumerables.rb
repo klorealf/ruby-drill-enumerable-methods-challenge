@@ -1,3 +1,13 @@
+def containing_quotes(sentences)
+  sentences_with_quotes = []
+
+  sentences.each do |sentence|
+    sentences_with_quotes << sentence if contains_quote?(sentence)
+  end
+
+  sentences_with_quotes
+end
+
 def balance(expenses, starting_balance)
   remaining_balance = starting_balance
 
@@ -16,16 +26,6 @@ def snippets(sentences, desired_word_count = 3)
   end
 
   snipped_sentences
-end
-
-def containing_quotes(sentences)
-  sentences_with_quotes = []
-
-  sentences.each do |sentence|
-    sentences_with_quotes << sentence if contains_quote?(sentence)
-  end
-
-  sentences_with_quotes
 end
 
 def initials(names)

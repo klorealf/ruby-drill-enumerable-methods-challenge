@@ -1,5 +1,28 @@
 require_relative '../working_with_enumerables'
 
+describe "containing_quotes" do
+  it "returns a new array containing the sentences with quotes in them" do
+    sentences = ['Someone yelled, "Oi!"', 'They went thataway!', 'They sang, "Oo-ee-oo ..."']
+
+    sentences_with_quotes = containing_quotes(sentences)
+    expect(sentences_with_quotes).to match_array ['Someone yelled, "Oi!"', 'They sang, "Oo-ee-oo ..."']
+  end
+
+  it "does not match delimit quotes with single quotes" do
+    sentences = ["Someone yelled, 'Oi!'"]
+
+    sentences_with_quotes = containing_quotes(sentences)
+    expect(sentences_with_quotes).to match_array []
+  end
+
+  it "does not modify the input array" do
+    sentences = ['Someone yelled, "Oi!"', 'They went thataway!', 'They sang, "Oo-ee-oo ..."']
+    containing_quotes(sentences)
+
+    expect(sentences).to eq ['Someone yelled, "Oi!"', 'They went thataway!', 'They sang, "Oo-ee-oo ..."']
+  end
+end
+
 describe "balance" do
   it "returns the remaining balance after subtracting all expenses from the starting balance" do
     expenses = [100, 100, 50, 100]
@@ -55,29 +78,6 @@ describe "snippets" do
 
     snippets(sentences)
     expect(sentences).to eq ["One two three four.", "Eins zwei drei vier."]
-  end
-end
-
-describe "containing_quotes" do
-  it "returns a new array containing the sentences with quotes in them" do
-    sentences = ['Someone yelled, "Oi!"', 'They went thataway!', 'They sang, "Oo-ee-oo ..."']
-
-    sentences_with_quotes = containing_quotes(sentences)
-    expect(sentences_with_quotes).to match_array ['Someone yelled, "Oi!"', 'They sang, "Oo-ee-oo ..."']
-  end
-
-  it "does not match delimit quotes with single quotes" do
-    sentences = ["Someone yelled, 'Oi!'"]
-
-    sentences_with_quotes = containing_quotes(sentences)
-    expect(sentences_with_quotes).to match_array []
-  end
-
-  it "does not modify the input array" do
-    sentences = ['Someone yelled, "Oi!"', 'They went thataway!', 'They sang, "Oo-ee-oo ..."']
-    containing_quotes(sentences)
-
-    expect(sentences).to eq ['Someone yelled, "Oi!"', 'They went thataway!', 'They sang, "Oo-ee-oo ..."']
   end
 end
 
