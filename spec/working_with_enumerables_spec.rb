@@ -49,6 +49,39 @@ describe "balance" do
   end
 end
 
+describe "finding a word with an even number of characters" do
+  it "returns the first word with an even number of characters" do
+    words = ["a", "be", "cat", "disc"]
+
+    found_word = even_length_word(words)
+
+    expect(found_word).to eq "be"
+  end
+
+  it "does not find empty strings" do
+    words = ["", "a", "be", "cat", "disc"]
+
+    found_word = even_length_word(words)
+
+    expect(found_word).to eq "be"
+  end
+
+  it "returns nil if no word has an even number of characters" do
+    words = ["a", "I"]
+
+    found_word = even_length_word(words)
+
+    expect(found_word).to eq nil
+  end
+
+  it "does not modify the input array" do
+    words = ["a", "be", "cat", "disc"]
+    even_length_word(words)
+
+    expect(words).to eq ["a", "be", "cat", "disc"]
+  end
+end
+
 describe "snippets" do
   it "returns a new array containing the first X words of each string followed by an ellipsis" do
     sentences = ["One two three four.", "Eins zwei drei vier."]

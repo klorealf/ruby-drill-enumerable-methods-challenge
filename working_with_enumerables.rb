@@ -18,6 +18,14 @@ def balance(expenses, starting_balance)
   remaining_balance
 end
 
+def even_length_word(words)
+  words.each do |word|
+    return word if word.length.even? && !word.empty?
+  end
+
+  nil
+end
+
 def snippets(sentences, desired_word_count = 3)
   snipped_sentences = []
 
