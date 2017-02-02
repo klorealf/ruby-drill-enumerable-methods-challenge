@@ -52,7 +52,7 @@ $ rspec spec/find_spec.rb
 ### Release 1:  Filtering a Collection
 Sometimes we want to find one specific item in a collection.  At other times we want to find all the items that meet a condition.  Or, that do not meet a condition.  For example, we might want to find all the phone numbers from area code 419, find all the job applicants who've not completed the entire application, etc.
 
-This is often referred to as filtering.  We create a filter that describes how we'll decide which elements were interested in.  Then we run each item in the collection through the filter.  Once we've gone through all of the items, we return a new collection containing the items that "passed through the filter".
+This is often referred to as filtering.  We create a filter that describes how we'll decide which elements we're interested in.  Then we run each item in the collection through the filter.  Once we've gone through all of the items, we return a new collection containing the items that "passed through the filter".
 
 [`#select`][ruby select] and [`#reject`][ruby reject] are two Ruby methods that help us to filter collections.  When using either of these methods, we set up our filter in the block passed to the method.  `#select` returns a new array containing the items for which the filter returned a truthy value.  `#reject` does the opposite.  It returns a new array containing the items for which the filter returned a falsey value.  See Figure 3 for examples.
 
