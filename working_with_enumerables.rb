@@ -20,7 +20,7 @@ end
 
 def pair_abbreviations(pair_data)
   pairs = Hash[pair_data.map {|value, key| [key, value]}]
-  end
+end
 
 
 
