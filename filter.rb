@@ -1,33 +1,28 @@
 def odd_integers(numbers)
-  odds = []
-
-  numbers.each do |number|
-    odds << number if number.odd?
-  end
-
-  odds
+  numbers.reject { |number| number.even? }
 end
 
 def long_strings(strings, minimum_length)
-  longs = []
+  # longs = []
+  strings.select { |string| string.length >= minimum_length }
+  #   if string.length >= minimum_length
+  #     longs << string
+  #   end
+  # end
 
-  strings.each do |string|
-    if string.length >= minimum_length
-      longs << string
-    end
-  end
-
-  longs
+  # longs
 end
 
 def multiples_of(possible_multiples, number)
-  multiples = []
+  # multiples = []
+  possible_multiples.select {|possible_multiple| possible_multiple % number == 0}
+    # if possible_multiple % number == 0
+  #     multiples << possible_multiple
+  #   end
+  # end
 
-  possible_multiples.each do |possible_multiple|
-    if possible_multiple % number == 0
-      multiples << possible_multiple
-    end
-  end
-
-  multiples
+  # multiples
 end
+
+#select
+#reject
