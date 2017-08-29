@@ -1,17 +1,17 @@
 def odd_integers(numbers)
-  odds = []
 
-  numbers.each do |number|
-    odds << number if number.odd?
+  numbers.select do |number|
+  number if number.odd?
   end
 
-  odds
 end
+
+
 
 def long_strings(strings, minimum_length)
   longs = []
 
-  strings.each do |string|
+  strings.select do |string|
     if string.length >= minimum_length
       longs << string
     end
