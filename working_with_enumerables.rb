@@ -1,64 +1,94 @@
+
+# def containing_quotes(sentences)
+#   sentences_with_quotes = []
+
+#   sentences.each do |sentence|
+#     sentences_with_quotes << sentence if contains_quote?(sentence)
+#   end
+
+#   sentences_with_quotes
+# end
+
 def containing_quotes(sentences)
-  sentences_with_quotes = []
-
-  sentences.each do |sentence|
-    sentences_with_quotes << sentence if contains_quote?(sentence)
-  end
-
-  sentences_with_quotes
+  sentences.select{|sentence| sentence if contains_quote?(sentence)}
 end
+
+# def balance(expenses, starting_balance)
+#   remaining_balance = starting_balance
+
+#   expenses.each do |expense|
+#     remaining_balance -= expense
+#   end
+
+#   remaining_balance
+# end
 
 def balance(expenses, starting_balance)
   remaining_balance = starting_balance
-
-  expenses.each do |expense|
-    remaining_balance -= expense
-  end
-
-  remaining_balance
+ expenses.reduce(starting_balance) {|remaining_balance, expense| remaining_balance - expense}
 end
+
+# def even_length_word(words)
+#   words.each do |word|
+#     return word if word.length.even? && !word.empty?
+#   end
+
+#   nil
+# end
 
 def even_length_word(words)
-  words.each do |word|
-    return word if word.length.even? && !word.empty?
-  end
-
-  nil
+  words.find {|word| word.length.even? && !word.empty?}
 end
+
+# def snippets(sentences, desired_word_count = 3)
+#   snipped_sentences = []
+
+#   sentences.each do |sentence|
+#     snipped_sentences << snippet(sentence, desired_word_count)
+#   end
+
+#   snipped_sentences
+# end
 
 def snippets(sentences, desired_word_count = 3)
-  snipped_sentences = []
-
-  sentences.each do |sentence|
-    snipped_sentences << snippet(sentence, desired_word_count)
-  end
-
-  snipped_sentences
+  sentences.map {|sentence| snippet(sentence, desired_word_count)}
 end
+
+# def initials(names)
+#   names_as_initials = []
+
+#   names.each do |name|
+#     names_as_initials << convert_to_initials(name)
+#   end
+
+#   names_as_initials
+# end
 
 def initials(names)
-  names_as_initials = []
-
-  names.each do |name|
-    names_as_initials << convert_to_initials(name)
-  end
-
-  names_as_initials
+  names.map {|name| convert_to_initials(name)}
 end
+
+# def pair_abbreviations(pair_data)
+#   pairs = {}
+
+#   pair_data.each do |data|
+#     abbreviation = data[0]
+#     full_form    = data[1]
+#     pairs[full_form] = abbreviation
+#   end
+
+#   pairs
+# end
 
 def pair_abbreviations(pair_data)
   pairs = {}
-
-  pair_data.each do |data|
+  pair_data.map do |data|
     abbreviation = data[0]
-    full_form    = data[1]
-
-    pairs[full_form] = abbreviation
-  end
-
-  pairs
-end
-
+    full_form = data[1]
+     pairs[full_form] = abbreviation
+   end
+   pairs
+ end
 
 # Helper methods, do not refactor ...
 def snippet(sentence, desired_word_count = 3)
