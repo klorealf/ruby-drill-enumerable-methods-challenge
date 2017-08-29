@@ -1,23 +1,13 @@
 def sum(numbers, starting_value = 0)
-  total = starting_value
-
-  numbers.each do |number|
-    total += number
-  end
-
-  total
+  total = numbers.reduce(starting_value){|sum, number| sum + number}
 end
 
 def hyphenate(words)
-  hyphenated_words = ""
-
-  words.each do |word|
-    if hyphenated_words.empty?
-      hyphenated_words += word
+  hyphenated_words = words.reduce("") do |memo, word|
+    if memo.empty?
+      memo << word
     else
-      hyphenated_words += "-#{word}"
+      memo << "-#{word}"
     end
   end
-
-  hyphenated_words
 end
