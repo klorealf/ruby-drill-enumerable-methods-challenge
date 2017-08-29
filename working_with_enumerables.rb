@@ -1,62 +1,84 @@
 def containing_quotes(sentences)
   sentences_with_quotes = []
 
-  sentences.each do |sentence|
-    sentences_with_quotes << sentence if contains_quote?(sentence)
-  end
+  # sentences.each do |sentence|
+  #   sentences_with_quotes << sentence if contains_quote?(sentence)
+  # end
 
-  sentences_with_quotes
+  # sentences_with_quotes
+
+  sentences.select do |sentence|
+    sentence if contains_quote?(sentence)
+  end
 end
 
-def balance(expenses, starting_balance)
-  remaining_balance = starting_balance
 
-  expenses.each do |expense|
-    remaining_balance -= expense
+def balance(expenses, starting_balance)
+  # remaining_balance = starting_balance
+
+  # expenses.each do |expense|
+  #   remaining_balance -= expense
+
+  expenses.reduce(starting_balance) do |sum, expense|
+   sum - expense
   end
 
-  remaining_balance
 end
 
 def even_length_word(words)
-  words.each do |word|
-    return word if word.length.even? && !word.empty?
-  end
+  # words.each do |word|
+  #   return word if word.length.even? && !word.empty?
+  # end
 
+  # nil
+
+words.select do |word|
+  return word if word.length.even? && !word.empty?
+    end
   nil
 end
 
 def snippets(sentences, desired_word_count = 3)
-  snipped_sentences = []
+  # snipped_sentences = []
 
-  sentences.each do |sentence|
-    snipped_sentences << snippet(sentence, desired_word_count)
+  # sentences.each do |sentence|
+  #   snipped_sentences << snippet(sentence, desired_word_count)
+
+  sentences.map do |sentence|
+    snippet(sentence, desired_word_count)
   end
-
-  snipped_sentences
 end
 
 def initials(names)
-  names_as_initials = []
+  # names_as_initials = []
 
-  names.each do |name|
-    names_as_initials << convert_to_initials(name)
+  # names.each do |name|
+  #   names_as_initials << convert_to_initials(name)
+  # end
+
+  # names_as_initials
+
+  names.map do |name|
+    convert_to_initials(name)
   end
-
-  names_as_initials
 end
 
 def pair_abbreviations(pair_data)
-  pairs = {}
+  #pairs = {}
 
-  pair_data.each do |data|
-    abbreviation = data[0]
-    full_form    = data[1]
+  # pair_data.each do |data|
+  #   abbreviation = data[0]
+  #   full_form    = data[1]
+  #   pairs[full_form] = abbreviation
+  # end
 
-    pairs[full_form] = abbreviation
+  # pairs
+
+  pair_data.reduce({}) do |pairs, data|
+    pairs[data[1]] = data[0]
+    pairs
   end
-
-  pairs
+  #pairs
 end
 
 
