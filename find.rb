@@ -1,17 +1,9 @@
 def first_under(numbers, limit)
-  numbers.each do |number|
-    return number if number < limit
-  end
-
+  numbers.find{|number| return number if number < limit}
   nil
 end
 
 def starts_with(strings, letter)
-  strings.each do |string|
-    if string =~ /\A#{letter}/i
-      return string
-    end
-  end
-
+  strings.find{|string| return string if string =~ /\A#{letter}/i}
   nil
 end

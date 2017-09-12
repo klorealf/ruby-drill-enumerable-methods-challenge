@@ -1,21 +1,11 @@
 def containing_quotes(sentences)
-  sentences_with_quotes = []
-
-  sentences.each do |sentence|
-    sentences_with_quotes << sentence if contains_quote?(sentence)
-  end
-
-  sentences_with_quotes
+  sentences.select{|sentence|sentence if contains_quote?(sentence)}
 end
 
 def balance(expenses, starting_balance)
-  remaining_balance = starting_balance
-
-  expenses.each do |expense|
-    remaining_balance -= expense
+  starting_balance.reduce do |starting_balance,expenses|
+    starting_balance -  expenses
   end
-
-  remaining_balance
 end
 
 def even_length_word(words)
